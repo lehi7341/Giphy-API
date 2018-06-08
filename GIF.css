@@ -1,0 +1,27 @@
+#GIFArea {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+h1 {
+    text-align: center;
+    font-size: 300%;
+}
+
+body {
+    background-color: firebrick;
+}
+
+.rating {
+    line-height: 10px, bold;
+}
+
+button {
+    margin: 1%;
+}
+
+#topic-input {
+    font: bolder;
+}
+
