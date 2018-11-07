@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <title>GiFy API</title>
   <link rel="stylesheet" type="text/css" href="GIF.css">
@@ -11,123 +12,25 @@
 
 <body>
 
-  <div class="container">
     <h1>Accident Search</h1>
 
-    <!-- Topics will Get Dumped Dere -->
-    <div id="GIFArea"></div>
-
     <!-- Rendered Buttons will get Dumped Here  -->
-    <div id="topics-view"></div>
-
-    <form id="topic-form">
-      <label for="topic-input">Add an Accident</label>
-      <input type="text" id="topic-input">
+    <div id="buttonsArea"></div>
+    <br>
+    <form id="search-form">
+      <label for="search-input">Add an Accident</label>
+      <input type="text" id="search-input">
       <br>
       <br>
-
-      <!-- Button triggers new topic to be added -->
-      <input id="add-topic" type="submit" value="Add an Accident">
+      <!-- Button triggers new search to be added -->
+      <input id="addSearch" input type="submit" value="Submit">
     </form>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-      // Initial array of topics
-      var topics = ["Car Accidents", "Truck Accidents", "Motorcycle Accidents", "Train Accidents"];
+    <!-- Searches will Get Dumped Here -->
+    <div id="searches"></div>
 
-      // displayTopicInfo function re-renders the HTML to display the appropriate content
-      function displayTopicInfo() {
+    <script src="javascript.js" type="text/javascript"></script>
 
-        var topic = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=ip9p2Dwr1NrWKv5T5xBuSxp4c24ONPNK&limit=10";
+  </body>
 
-        // Creating an AJAX call for the specific topic button being clicked
-        $.ajax({
-          url: queryURL,
-          method: "GET"
-        }).then(function (response) {
-          console.log(queryURL);
-          console.log(response);
-
-
-          response.data.forEach(function (result) {
-
-            imageRating = result.rating;
-            imageAnimate = result.images.fixed_height_small.url;
-            imageStill = result.images.fixed_height_small_still.url;
-
-            var gify = $(`<div id="GIFArea">
-                      <p>Rated: ${imageRating}<p>
-                        <img class="gif" src="${imageStill}" data-still="${imageStill}" data-animate="${imageAnimate}"
-                         </div>`);
-            // This is supposed to work but could not get it to pause GIF
-            $("#GIFArea").append(gify);
-            gify.on("click", function () {
-
-            })
-          });
-
-
-        });
-
-      }
-
-      // Function for displaying topic data
-      function renderButtons() {
-
-        // Deleting the topics prior to adding new topics
-        // (this is necessary otherwise you will have repeat buttons)
-        $("#topics-view").empty();
-
-
-
-
-        // Looping through the array of topics
-        for (var i = 0; i < topics.length; i++) {
-
-          // Then dynamicaly generating buttons for each topic in the array
-          // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-          var a = $("<button>");
-          // Adding a class of topic-btn to our button
-          a.addClass("topic-btn");
-          // Adding a data-attribute
-          a.attr("data-name", topics[i]);
-          // Providing the initial button text
-          a.text(topics[i]);
-          // Adding the button to the buttons-view div
-          $("#topics-view").append(a);
-        }
-
-
-
-      }
-
-
-
-      // This function handles events where a topic button is clicked
-      $("#add-topic").on("click", function (event) {
-        event.preventDefault();
-        // This line grabs the input from the textbox
-        var topic = $("#topic-input").val().trim();
-
-        // Adding topic from the textbox to our array
-        topics.push(topic);
-
-        // Calling renderButtons which handles the processing of our topic array
-        renderButtons();
-      });
-
-
-
-      // Adding a click event listener to all elements with a class of "topic-btn"
-      $(document).on("click", ".topic-btn", displayTopicInfo);
-
-      // Calling the renderButtons function to display the intial buttons
-      renderButtons();
-
-
-    </script>
-  </div>
-</body>
-
-</html>
+  </html>

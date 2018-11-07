@@ -1,4 +1,4 @@
-#GIFArea {
+#searches {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -7,6 +7,7 @@
 h1 {
     text-align: center;
     font-size: 300%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 body {
@@ -21,7 +22,19 @@ button {
     margin: 1%;
 }
 
-#topic-input {
-    font: bolder;
+#search-input {
+    font-weight: 600;
+}
+
+#buttonsArea {
+    background-color: rosybrown;
+}
+
+#addSearch {
+    margin-left: 119px;
+}
+
+label {
+    font-weight: 800;
 }
 
